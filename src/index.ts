@@ -1,24 +1,12 @@
-import { WorkerEntrypoint } from "cloudflare:workers";
 import { Hono } from "hono";
 import { WebStandardStreamableHTTPServerTransport } from "@modelcontextprotocol/sdk/server/webStandardStreamableHttp.js";
 import { createMcpServer } from "./mcp";
 import { ingestSpec, refreshCatalogEntry } from "./spec";
 import type { ApiMetadata, Env, ProcessedSpec, RegisterPayload } from "./types";
+import { LANDING_HTML } from "./landing";
+import { OG_IMAGE_B64 } from "./og-image";
 
 type Ctx = { Bindings: Env };
-
-export class GlobalOutbound extends WorkerEntrypoint<Env, { allowedHosts: string[]; authHeader: string; authValue: string; authPrefix: string }> {
-  async fetch(request: Request): Promise<Response> {
-    const url = new URL(request.url);
-    const hosts = this.ctx.props.allowedHosts.map((h) => h.toLowerCase());
-    if (!hosts.includes(url.hostname.toLowerCase())) {
-      return new Response(`Forbidden host: ${url.hostname}`, { status: 403 });
-    }
-    const headers = new Headers(request.headers);
-    headers.set(this.ctx.props.authHeader, `${this.ctx.props.authPrefix}${this.ctx.props.authValue}`.trim());
-    return fetch(new Request(request, { headers }));
-  }
-}
 
 async function loadApi(env: Env, apiId: string): Promise<{ spec: ProcessedSpec; rawSpecText: string; meta: ApiMetadata }> {
   const metaRaw = await env.SPEC_CACHE.get(`api:${apiId}:meta`);
@@ -46,23 +34,17 @@ async function listApis(env: Env): Promise<ApiMetadata[]> {
   return apis.filter(Boolean) as ApiMetadata[];
 }
 
-function landingPage(origin: string, apis: ApiMetadata[]): string {
-  const rows = apis
-    .map(
-      (a) => `<tr><td>${a.apiId}</td><td>${a.title}</td><td>${a.version}</td><td>${a.baseUrl}</td><td>${a.endpointCount ?? "-"}</td><td><code>${origin}/mcp?api_id=${a.apiId}</code></td></tr>`
-    )
-    .join("\n");
-  return `<!doctype html><html><head><meta charset="utf-8"/><title>Universal Code Mode MCP</title>
-  <style>body{font-family:Inter,system-ui,Arial,sans-serif;max-width:1100px;margin:40px auto;padding:0 16px;color:#111}table{border-collapse:collapse;width:100%}th,td{border-bottom:1px solid #e5e7eb;padding:10px;text-align:left}code{background:#f3f4f6;padding:2px 6px;border-radius:4px}.muted{color:#6b7280}</style></head>
-  <body><h1>Universal Code Mode MCP</h1><p class="muted">Registered APIs: ${apis.length}</p>
-  <table><thead><tr><th>API ID</th><th>Name</th><th>Version</th><th>Base URL</th><th>Endpoints</th><th>MCP URL</th></tr></thead><tbody>${rows}</tbody></table></body></html>`;
-}
+// Landing page served from src/landing.ts
 
 const app = new Hono<Ctx>();
 
-app.get("/", async (c) => {
-  const apis = await listApis(c.env);
-  return c.html(landingPage(new URL(c.req.url).origin, apis));
+app.get("/", (c) => {
+  return c.html(LANDING_HTML);
+});
+
+app.get("/og.jpg", (c) => {
+  const bytes = Uint8Array.from(atob(OG_IMAGE_B64), (ch) => ch.charCodeAt(0));
+  return new Response(bytes, { headers: { "content-type": "image/jpeg", "cache-control": "public, max-age=86400" } });
 });
 
 app.get("/health", (c) => c.json({ ok: true, service: "universal-codemode-mcp" }));
@@ -89,6 +71,39 @@ app.post("/register", async (c) => {
       ok: true,
       api: { id: metadata.apiId, title: metadata.title, version: metadata.version, baseUrl: metadata.baseUrl, warnings: metadata.warnings ?? [] }
     });
+  } catch (err) {
+    return c.json({ error: err instanceof Error ? err.message : "Unknown error" }, 400);
+  }
+});
+
+// Accept pre-processed specs directly (for bulk seeding)
+app.post("/register-processed", async (c) => {
+  if (!requireAdmin(c.req.raw, c.env)) return c.json({ error: "unauthorized" }, 401);
+  try {
+    const body = (await c.req.json()) as { spec: ProcessedSpec; auth?: { headerName?: string; prefix?: string } };
+    const spec = body.spec;
+    if (!spec.apiId || !spec.baseUrl || !spec.operations) return c.json({ error: "Invalid processed spec" }, 400);
+    const meta: ApiMetadata = {
+      apiId: spec.apiId,
+      title: spec.title || spec.apiId,
+      version: spec.version || "1.0",
+      baseUrl: spec.baseUrl,
+      allowedHosts: spec.allowedHosts || [new URL(spec.baseUrl).hostname],
+      authHeaderName: body.auth?.headerName || "authorization",
+      authPrefix: body.auth?.prefix || "Bearer ",
+      objectKey: `specs/${spec.apiId}.json`,
+      endpointCount: spec.operations.length,
+    };
+    const text = JSON.stringify(spec);
+    await Promise.all([
+      c.env.SPEC_BUCKET.put(meta.objectKey, text, { httpMetadata: { contentType: "application/json" } }),
+      c.env.SPEC_CACHE.put(`api:${spec.apiId}:meta`, JSON.stringify(meta)),
+      c.env.SPEC_CACHE.put(
+        "apis:list",
+        JSON.stringify(Array.from(new Set([...(JSON.parse((await c.env.SPEC_CACHE.get("apis:list")) ?? "[]") as string[]), spec.apiId])))
+      ),
+    ]);
+    return c.json({ ok: true, api: { id: meta.apiId, title: meta.title, endpoints: meta.endpointCount } });
   } catch (err) {
     return c.json({ error: err instanceof Error ? err.message : "Unknown error" }, 400);
   }

@@ -60,7 +60,7 @@ export function createMcpServer(
 ): McpServer {
   const server = new McpServer({ name: `universal-codemode-${meta.apiId}`, version: "0.1.0" });
   const searchExecutor = createSearchExecutor(env);
-  const executeExecutor = createExecuteExecutor(env, ctx as ExecutionContext & { exports: any });
+  const executeExecutor = createExecuteExecutor(env, ctx);
   const maxChars = Number(env.MAX_RESPONSE_CHARS ?? "40000");
   const maxReq = Number(env.MAX_EXECUTE_REQUESTS ?? "20");
 

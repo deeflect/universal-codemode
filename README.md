@@ -41,7 +41,7 @@ Add to your MCP config:
 {
   "servers": {
     "github": {
-      "url": "https://codemode.dev/mcp?api_id=github",
+      "url": "https://cm.dee.ad/mcp?api_id=github",
       "headers": { "x-api-key": "your_github_token" }
     }
   }

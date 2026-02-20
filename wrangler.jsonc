@@ -1,37 +1,41 @@
 {
-  "$schema": "./node_modules/wrangler/config-schema.json",
-  "name": "universal-codemode-mcp",
-  "main": "src/index.ts",
-  "compatibility_date": "2026-01-12",
-  "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
-  "observability": {
-    "logs": { "enabled": true }
-  },
-  "triggers": {
-    "crons": ["0 3 * * 1"]
-  },
-  "worker_loaders": [{ "binding": "LOADER" }],
-  "services": [
-    {
-      "binding": "GLOBAL_OUTBOUND",
-      "service": "universal-codemode-mcp",
-      "entrypoint": "GlobalOutbound"
-    }
-  ],
-  "r2_buckets": [
-    {
-      "binding": "SPEC_BUCKET",
-      "bucket_name": "universal-codemode-specs"
-    }
-  ],
-  "kv_namespaces": [
-    {
-      "binding": "SPEC_CACHE",
-      "id": "replace-with-kv-id"
-    }
-  ],
-  "vars": {
-    "MAX_EXECUTE_REQUESTS": "20",
-    "MAX_RESPONSE_CHARS": "40000"
-  }
+	"$schema": "./node_modules/wrangler/config-schema.json",
+	"name": "universal-codemode-mcp",
+	"main": "src/index.ts",
+	"compatibility_date": "2026-01-12",
+	"compatibility_flags": [
+		"nodejs_compat"
+	],
+	"observability": {
+		"logs": {
+			"enabled": true
+		}
+	},
+	"triggers": {
+		"crons": [
+			"0 3 * * 1"
+		]
+	},
+	"r2_buckets": [
+		{
+			"binding": "SPEC_BUCKET",
+			"bucket_name": "codemode-specs"
+		}
+	],
+	"kv_namespaces": [
+		{
+			"binding": "SPEC_CACHE",
+			"id": "62762f4d902845adb323a2596c7397c3"
+		}
+	],
+	"routes": [
+		{
+			"pattern": "cm.dee.ad/*",
+			"zone_name": "dee.ad"
+		}
+	],
+	"vars": {
+		"MAX_EXECUTE_REQUESTS": "20",
+		"MAX_RESPONSE_CHARS": "40000"
+	}
 }

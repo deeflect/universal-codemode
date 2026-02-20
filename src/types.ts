@@ -3,8 +3,6 @@ export interface RateLimiter {
 }
 
 export interface Env {
-  LOADER: WorkerLoader;
-  GLOBAL_OUTBOUND: Fetcher;
   SPEC_BUCKET: R2Bucket;
   SPEC_CACHE: KVNamespace;
   ADMIN_TOKEN: string;
