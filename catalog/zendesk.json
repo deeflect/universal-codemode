@@ -1,0 +1,12 @@
+{
+  "apiId": "zendesk",
+  "sourceUrl": "https://developer.zendesk.com/api-reference/ticketing/introduction/",
+  "baseUrl": "https://{subdomain}.zendesk.com",
+  "allowedHosts": [
+    "example.zendesk.com"
+  ],
+  "auth": {
+    "headerName": "authorization",
+    "prefix": "Bearer "
+  }
+}

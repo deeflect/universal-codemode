@@ -1,0 +1,12 @@
+{
+  "apiId": "aws-s3",
+  "sourceUrl": "https://raw.githubusercontent.com/aws/aws-sdk-js-v3/main/codegen/sdk-codegen/aws-models/s3.json",
+  "baseUrl": "https://s3.amazonaws.com",
+  "allowedHosts": [
+    "s3.amazonaws.com"
+  ],
+  "auth": {
+    "headerName": "authorization",
+    "prefix": "Bearer "
+  }
+}

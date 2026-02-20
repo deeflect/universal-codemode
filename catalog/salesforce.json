@@ -1,0 +1,12 @@
+{
+  "apiId": "salesforce",
+  "sourceUrl": "https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/resources_list.htm",
+  "baseUrl": "https://{instance}.salesforce.com",
+  "allowedHosts": [
+    "example.salesforce.com"
+  ],
+  "auth": {
+    "headerName": "authorization",
+    "prefix": "Bearer "
+  }
+}

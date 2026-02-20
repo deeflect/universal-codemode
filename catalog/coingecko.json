@@ -1,0 +1,12 @@
+{
+  "apiId": "coingecko",
+  "sourceUrl": "https://www.coingecko.com/api/documentation",
+  "baseUrl": "https://api.coingecko.com/api/v3",
+  "allowedHosts": [
+    "api.coingecko.com"
+  ],
+  "auth": {
+    "headerName": "authorization",
+    "prefix": ""
+  }
+}

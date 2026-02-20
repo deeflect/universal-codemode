@@ -1,0 +1,12 @@
+{
+  "apiId": "alpha-vantage",
+  "sourceUrl": "https://www.alphavantage.co/documentation/",
+  "baseUrl": "https://www.alphavantage.co",
+  "allowedHosts": [
+    "www.alphavantage.co"
+  ],
+  "auth": {
+    "headerName": "authorization",
+    "prefix": "Bearer "
+  }
+}

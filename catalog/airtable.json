@@ -1,0 +1,12 @@
+{
+  "apiId": "airtable",
+  "sourceUrl": "https://airtable.com/developers/web/api/introduction",
+  "baseUrl": "https://api.airtable.com",
+  "allowedHosts": [
+    "api.airtable.com"
+  ],
+  "auth": {
+    "headerName": "authorization",
+    "prefix": "Bearer "
+  }
+}

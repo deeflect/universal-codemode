@@ -1,0 +1,12 @@
+{
+  "apiId": "sendgrid",
+  "sourceUrl": "https://raw.githubusercontent.com/sendgrid/sendgrid-oai/main/oai.json",
+  "baseUrl": "https://api.sendgrid.com",
+  "allowedHosts": [
+    "api.sendgrid.com"
+  ],
+  "auth": {
+    "headerName": "authorization",
+    "prefix": "Bearer "
+  }
+}

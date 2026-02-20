@@ -1,0 +1,12 @@
+{
+  "apiId": "notion",
+  "sourceUrl": "https://raw.githubusercontent.com/makenotion/notion-sdk-js/main/openapi.json",
+  "baseUrl": "https://api.notion.com",
+  "allowedHosts": [
+    "api.notion.com"
+  ],
+  "auth": {
+    "headerName": "authorization",
+    "prefix": "Bearer "
+  }
+}

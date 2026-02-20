@@ -1,0 +1,12 @@
+{
+  "apiId": "figma",
+  "sourceUrl": "https://raw.githubusercontent.com/figma/rest-api-spec/main/openapi/openapi.yaml",
+  "baseUrl": "https://api.figma.com",
+  "allowedHosts": [
+    "api.figma.com"
+  ],
+  "auth": {
+    "headerName": "authorization",
+    "prefix": "Bearer "
+  }
+}

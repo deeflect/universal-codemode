@@ -1,0 +1,12 @@
+{
+  "apiId": "twitter-x",
+  "sourceUrl": "https://api.x.com/2/openapi.json",
+  "baseUrl": "https://api.x.com",
+  "allowedHosts": [
+    "api.x.com"
+  ],
+  "auth": {
+    "headerName": "authorization",
+    "prefix": "Bearer "
+  }
+}

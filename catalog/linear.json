@@ -1,0 +1,12 @@
+{
+  "apiId": "linear",
+  "sourceUrl": "https://studio.apollographql.com/public/Linear-API/variant/current/schema-reference",
+  "baseUrl": "https://api.linear.app",
+  "allowedHosts": [
+    "api.linear.app"
+  ],
+  "auth": {
+    "headerName": "authorization",
+    "prefix": "Bearer "
+  }
+}

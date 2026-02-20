@@ -1,0 +1,12 @@
+{
+  "apiId": "aws-lambda",
+  "sourceUrl": "https://raw.githubusercontent.com/aws/aws-sdk-js-v3/main/codegen/sdk-codegen/aws-models/lambda.json",
+  "baseUrl": "https://lambda.us-east-1.amazonaws.com",
+  "allowedHosts": [
+    "lambda.us-east-1.amazonaws.com"
+  ],
+  "auth": {
+    "headerName": "authorization",
+    "prefix": "Bearer "
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "apiId": "calendly",
+  "sourceUrl": "https://stoplight.io/api/v1/projects/calendly/api-docs",
+  "baseUrl": "https://api.calendly.com",
+  "allowedHosts": [
+    "api.calendly.com"
+  ],
+  "auth": {
+    "headerName": "authorization",
+    "prefix": "Bearer "
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "apiId": "npm-registry",
+  "sourceUrl": "https://github.com/npm/registry/blob/master/docs/REGISTRY-API.md",
+  "baseUrl": "https://registry.npmjs.org",
+  "allowedHosts": [
+    "registry.npmjs.org"
+  ],
+  "auth": {
+    "headerName": "authorization",
+    "prefix": "Bearer "
+  }
+}

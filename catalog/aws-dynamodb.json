@@ -1,0 +1,12 @@
+{
+  "apiId": "aws-dynamodb",
+  "sourceUrl": "https://raw.githubusercontent.com/aws/aws-sdk-js-v3/main/codegen/sdk-codegen/aws-models/dynamodb.json",
+  "baseUrl": "https://dynamodb.us-east-1.amazonaws.com",
+  "allowedHosts": [
+    "dynamodb.us-east-1.amazonaws.com"
+  ],
+  "auth": {
+    "headerName": "authorization",
+    "prefix": "Bearer "
+  }
+}

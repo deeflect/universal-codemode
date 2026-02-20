@@ -1,0 +1,12 @@
+{
+  "apiId": "google-maps",
+  "sourceUrl": "https://developers.google.com/maps/documentation",
+  "baseUrl": "https://maps.googleapis.com",
+  "allowedHosts": [
+    "maps.googleapis.com"
+  ],
+  "auth": {
+    "headerName": "authorization",
+    "prefix": "Bearer "
+  }
+}

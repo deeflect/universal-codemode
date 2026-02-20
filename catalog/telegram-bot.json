@@ -1,0 +1,12 @@
+{
+  "apiId": "telegram-bot",
+  "sourceUrl": "https://core.telegram.org/bots/api",
+  "baseUrl": "https://api.telegram.org",
+  "allowedHosts": [
+    "api.telegram.org"
+  ],
+  "auth": {
+    "headerName": "authorization",
+    "prefix": "Bot "
+  }
+}

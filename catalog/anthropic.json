@@ -1,0 +1,12 @@
+{
+  "apiId": "anthropic",
+  "sourceUrl": "https://docs.anthropic.com/en/api/openapi.json",
+  "baseUrl": "https://api.anthropic.com",
+  "allowedHosts": [
+    "api.anthropic.com"
+  ],
+  "auth": {
+    "headerName": "x-api-key",
+    "prefix": ""
+  }
+}

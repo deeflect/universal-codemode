@@ -1,0 +1,12 @@
+{
+  "apiId": "convertkit",
+  "sourceUrl": "https://developers.convertkit.com",
+  "baseUrl": "https://api.convertkit.com",
+  "allowedHosts": [
+    "api.convertkit.com"
+  ],
+  "auth": {
+    "headerName": "authorization",
+    "prefix": "Bearer "
+  }
+}

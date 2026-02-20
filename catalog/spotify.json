@@ -1,0 +1,12 @@
+{
+  "apiId": "spotify",
+  "sourceUrl": "https://developer.spotify.com/documentation/web-api/reference",
+  "baseUrl": "https://api.spotify.com",
+  "allowedHosts": [
+    "api.spotify.com"
+  ],
+  "auth": {
+    "headerName": "authorization",
+    "prefix": "Bearer "
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "apiId": "mailchimp",
+  "sourceUrl": "https://raw.githubusercontent.com/mailchimp/mailchimp-client-lib-codegen/main/spec/MarketingApiV3.0.yaml",
+  "baseUrl": "https://{dc}.api.mailchimp.com",
+  "allowedHosts": [
+    "us1.api.mailchimp.com"
+  ],
+  "auth": {
+    "headerName": "authorization",
+    "prefix": "Bearer "
+  }
+}

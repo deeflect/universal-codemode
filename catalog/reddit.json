@@ -1,0 +1,12 @@
+{
+  "apiId": "reddit",
+  "sourceUrl": "https://www.reddit.com/dev/api/",
+  "baseUrl": "https://oauth.reddit.com",
+  "allowedHosts": [
+    "oauth.reddit.com"
+  ],
+  "auth": {
+    "headerName": "authorization",
+    "prefix": "Bearer "
+  }
+}

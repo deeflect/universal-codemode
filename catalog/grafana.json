@@ -1,0 +1,12 @@
+{
+  "apiId": "grafana",
+  "sourceUrl": "https://raw.githubusercontent.com/grafana/grafana/main/public/openapi3.json",
+  "baseUrl": "https://grafana.example.com",
+  "allowedHosts": [
+    "grafana.example.com"
+  ],
+  "auth": {
+    "headerName": "authorization",
+    "prefix": "Bearer "
+  }
+}

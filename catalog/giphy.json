@@ -1,0 +1,12 @@
+{
+  "apiId": "giphy",
+  "sourceUrl": "https://developers.giphy.com/docs/api",
+  "baseUrl": "https://api.giphy.com",
+  "allowedHosts": [
+    "api.giphy.com"
+  ],
+  "auth": {
+    "headerName": "authorization",
+    "prefix": "Bearer "
+  }
+}

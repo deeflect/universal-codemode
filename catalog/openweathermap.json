@@ -1,0 +1,12 @@
+{
+  "apiId": "openweathermap",
+  "sourceUrl": "https://openweathermap.org/api",
+  "baseUrl": "https://api.openweathermap.org",
+  "allowedHosts": [
+    "api.openweathermap.org"
+  ],
+  "auth": {
+    "headerName": "authorization",
+    "prefix": "Bearer "
+  }
+}

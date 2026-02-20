@@ -1,0 +1,12 @@
+{
+  "apiId": "confluence",
+  "sourceUrl": "https://developer.atlassian.com/cloud/confluence/swagger.v3.json",
+  "baseUrl": "https://api.atlassian.com",
+  "allowedHosts": [
+    "api.atlassian.com"
+  ],
+  "auth": {
+    "headerName": "authorization",
+    "prefix": "Bearer "
+  }
+}

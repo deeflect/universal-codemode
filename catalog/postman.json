@@ -1,0 +1,12 @@
+{
+  "apiId": "postman",
+  "sourceUrl": "https://www.postman.com/postman/workspace/postman-public-workspace/documentation/631643-588f0d4b-87cf-4f6f-a11e-2f05f78d55d3",
+  "baseUrl": "https://api.getpostman.com",
+  "allowedHosts": [
+    "api.getpostman.com"
+  ],
+  "auth": {
+    "headerName": "x-api-key",
+    "prefix": ""
+  }
+}

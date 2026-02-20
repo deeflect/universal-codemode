@@ -1,0 +1,12 @@
+{
+  "apiId": "cloudflare",
+  "sourceUrl": "https://raw.githubusercontent.com/cloudflare/api-schemas/main/openapi.json",
+  "baseUrl": "https://api.cloudflare.com/client/v4",
+  "allowedHosts": [
+    "api.cloudflare.com"
+  ],
+  "auth": {
+    "headerName": "authorization",
+    "prefix": "Bearer "
+  }
+}

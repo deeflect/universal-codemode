@@ -1,0 +1,12 @@
+{
+  "apiId": "slack",
+  "sourceUrl": "https://raw.githubusercontent.com/slackapi/slack-api-specs/master/web-api/slack_web_openapi_v2_without_examples.json",
+  "baseUrl": "https://slack.com",
+  "allowedHosts": [
+    "slack.com"
+  ],
+  "auth": {
+    "headerName": "authorization",
+    "prefix": "Bearer "
+  }
+}

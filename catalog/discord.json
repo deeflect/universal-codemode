@@ -1,0 +1,12 @@
+{
+  "apiId": "discord",
+  "sourceUrl": "https://raw.githubusercontent.com/discord/discord-api-spec/main/specs/openapi.json",
+  "baseUrl": "https://discord.com/api/v10",
+  "allowedHosts": [
+    "discord.com"
+  ],
+  "auth": {
+    "headerName": "authorization",
+    "prefix": "Bot "
+  }
+}

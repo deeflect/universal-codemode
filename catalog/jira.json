@@ -1,0 +1,12 @@
+{
+  "apiId": "jira",
+  "sourceUrl": "https://developer.atlassian.com/cloud/jira/platform/swagger-v3.v3.json",
+  "baseUrl": "https://your-domain.atlassian.net",
+  "allowedHosts": [
+    "your-domain.atlassian.net"
+  ],
+  "auth": {
+    "headerName": "authorization",
+    "prefix": "Bearer "
+  }
+}

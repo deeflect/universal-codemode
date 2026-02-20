@@ -1,0 +1,12 @@
+{
+  "apiId": "pypi",
+  "sourceUrl": "https://docs.pypi.org/api/json/",
+  "baseUrl": "https://pypi.org",
+  "allowedHosts": [
+    "pypi.org"
+  ],
+  "auth": {
+    "headerName": "authorization",
+    "prefix": ""
+  }
+}

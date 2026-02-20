@@ -1,0 +1,12 @@
+{
+  "apiId": "newsapi",
+  "sourceUrl": "https://newsapi.org/docs/endpoints",
+  "baseUrl": "https://newsapi.org",
+  "allowedHosts": [
+    "newsapi.org"
+  ],
+  "auth": {
+    "headerName": "authorization",
+    "prefix": "Bearer "
+  }
+}

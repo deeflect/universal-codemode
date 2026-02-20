@@ -1,0 +1,12 @@
+{
+  "apiId": "datadog",
+  "sourceUrl": "https://docs.datadoghq.com/api/latest/",
+  "baseUrl": "https://api.datadoghq.com",
+  "allowedHosts": [
+    "api.datadoghq.com"
+  ],
+  "auth": {
+    "headerName": "authorization",
+    "prefix": "Bearer "
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "apiId": "shopify",
+  "sourceUrl": "https://shopify.dev/docs/api/admin-rest",
+  "baseUrl": "https://{shop}.myshopify.com",
+  "allowedHosts": [
+    "example.myshopify.com"
+  ],
+  "auth": {
+    "headerName": "authorization",
+    "prefix": "Bearer "
+  }
+}

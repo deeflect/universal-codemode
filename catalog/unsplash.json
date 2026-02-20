@@ -1,0 +1,12 @@
+{
+  "apiId": "unsplash",
+  "sourceUrl": "https://unsplash.com/documentation",
+  "baseUrl": "https://api.unsplash.com",
+  "allowedHosts": [
+    "api.unsplash.com"
+  ],
+  "auth": {
+    "headerName": "authorization",
+    "prefix": "Bearer "
+  }
+}

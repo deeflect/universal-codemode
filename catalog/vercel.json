@@ -1,0 +1,12 @@
+{
+  "apiId": "vercel",
+  "sourceUrl": "https://openapi.vercel.sh",
+  "baseUrl": "https://api.vercel.com",
+  "allowedHosts": [
+    "api.vercel.com"
+  ],
+  "auth": {
+    "headerName": "authorization",
+    "prefix": "Bearer "
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "apiId": "firebase",
+  "sourceUrl": "https://firebase.googleapis.com/$discovery/rest?version=v1beta1",
+  "baseUrl": "https://firebase.googleapis.com",
+  "allowedHosts": [
+    "firebase.googleapis.com"
+  ],
+  "auth": {
+    "headerName": "authorization",
+    "prefix": "Bearer "
+  }
+}

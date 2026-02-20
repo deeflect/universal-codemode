@@ -1,0 +1,12 @@
+{
+  "apiId": "mongodb-atlas",
+  "sourceUrl": "https://www.mongodb.com/docs/atlas/reference/api-resources-spec/v2/",
+  "baseUrl": "https://cloud.mongodb.com/api/atlas/v2",
+  "allowedHosts": [
+    "cloud.mongodb.com"
+  ],
+  "auth": {
+    "headerName": "authorization",
+    "prefix": "Bearer "
+  }
+}

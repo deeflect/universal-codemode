@@ -1,0 +1,12 @@
+{
+  "apiId": "pagerduty",
+  "sourceUrl": "https://raw.githubusercontent.com/PagerDuty/api-schema/main/reference/REST/openapiv3.json",
+  "baseUrl": "https://api.pagerduty.com",
+  "allowedHosts": [
+    "api.pagerduty.com"
+  ],
+  "auth": {
+    "headerName": "authorization",
+    "prefix": "Bearer "
+  }
+}

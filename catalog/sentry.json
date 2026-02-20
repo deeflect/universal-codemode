@@ -1,0 +1,12 @@
+{
+  "apiId": "sentry",
+  "sourceUrl": "https://docs.sentry.io/api/",
+  "baseUrl": "https://sentry.io/api/0",
+  "allowedHosts": [
+    "sentry.io"
+  ],
+  "auth": {
+    "headerName": "authorization",
+    "prefix": "Bearer "
+  }
+}

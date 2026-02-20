@@ -1,0 +1,12 @@
+{
+  "apiId": "youtube-data",
+  "sourceUrl": "https://www.googleapis.com/discovery/v1/apis/youtube/v3/rest",
+  "baseUrl": "https://www.googleapis.com",
+  "allowedHosts": [
+    "www.googleapis.com"
+  ],
+  "auth": {
+    "headerName": "authorization",
+    "prefix": "Bearer "
+  }
+}

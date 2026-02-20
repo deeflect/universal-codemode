@@ -1,0 +1,12 @@
+{
+  "apiId": "mapbox",
+  "sourceUrl": "https://docs.mapbox.com/api/",
+  "baseUrl": "https://api.mapbox.com",
+  "allowedHosts": [
+    "api.mapbox.com"
+  ],
+  "auth": {
+    "headerName": "authorization",
+    "prefix": "Bearer "
+  }
+}

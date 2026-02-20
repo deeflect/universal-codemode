@@ -1,0 +1,12 @@
+{
+  "apiId": "zoom",
+  "sourceUrl": "https://raw.githubusercontent.com/zoom/api/master/openapi.yaml",
+  "baseUrl": "https://api.zoom.us",
+  "allowedHosts": [
+    "api.zoom.us"
+  ],
+  "auth": {
+    "headerName": "authorization",
+    "prefix": "Bearer "
+  }
+}

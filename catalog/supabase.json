@@ -1,0 +1,12 @@
+{
+  "apiId": "supabase",
+  "sourceUrl": "https://api.supabase.com/api/v1/openapi",
+  "baseUrl": "https://api.supabase.com",
+  "allowedHosts": [
+    "api.supabase.com"
+  ],
+  "auth": {
+    "headerName": "authorization",
+    "prefix": "Bearer "
+  }
+}

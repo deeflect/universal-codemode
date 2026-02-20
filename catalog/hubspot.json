@@ -1,0 +1,12 @@
+{
+  "apiId": "hubspot",
+  "sourceUrl": "https://api.hubapi.com/api-catalog-public/v1/apis/crm/v3",
+  "baseUrl": "https://api.hubapi.com",
+  "allowedHosts": [
+    "api.hubapi.com"
+  ],
+  "auth": {
+    "headerName": "authorization",
+    "prefix": "Bearer "
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "name": "universal-codemode-mcp",
+  "version": "0.1.0",
+  "description": "Give your AI agent access to any API in ~1,000 tokens. 2 tools. 56 APIs.",
+  "type": "module",
+  "license": "MIT",
+  "bin": {
+    "universal-codemode-mcp": "./bin/cli.mjs"
+  },
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "typecheck": "tsc --noEmit",
+    "types": "wrangler types",
+    "test": "vitest run",
+    "check": "npm run typecheck && npm run test",
+    "register": "node scripts/register.mjs",
+    "seed-catalog": "node scripts/seed-catalog.mjs",
+    "serve": "node bin/cli.mjs serve",
+    "test:real-apis": "node scripts/smoke-real-apis.mjs"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.26.0",
+    "acorn": "^8.15.0",
+    "hono": "^4.11.9",
+    "js-yaml": "^4.1.0",
+    "zod": "^4.3.5"
+  },
+  "devDependencies": {
+    "@cloudflare/vitest-pool-workers": "^0.12.11",
+    "@cloudflare/workers-types": "^4.20260227.0",
+    "@types/js-yaml": "^4.0.9",
+    "@types/node": "^25.0.6",
+    "typescript": "^5.7.0",
+    "vitest": "3.2",
+    "wrangler": "^4.64.0"
+  },
+  "author": "Dee <dee@deeflect.com> (https://deeflect.com)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/deeflect/universal-codemode.git"
+  },
+  "homepage": "https://github.com/deeflect/universal-codemode",
+  "bugs": {
+    "url": "https://github.com/deeflect/universal-codemode/issues"
+  },
+  "keywords": [
+    "mcp",
+    "openapi",
+    "ai",
+    "agent",
+    "cloudflare",
+    "workers",
+    "code-mode",
+    "api"
+  ]
+}

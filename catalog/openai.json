@@ -1,0 +1,12 @@
+{
+  "apiId": "openai",
+  "sourceUrl": "https://raw.githubusercontent.com/openai/openai-openapi/master/openapi.yaml",
+  "baseUrl": "https://api.openai.com",
+  "allowedHosts": [
+    "api.openai.com"
+  ],
+  "auth": {
+    "headerName": "authorization",
+    "prefix": "Bearer "
+  }
+}

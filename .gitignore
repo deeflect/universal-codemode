@@ -1,0 +1,24 @@
+node_modules/
+.wrangler/
+.ucmcp/
+coverage/
+*.log
+
+# Landing page (deployed separately)
+site/
+
+# Local test files
+test-*.mjs
+
+# Secrets
+.env
+.dev.vars
+
+# Editor
+.vscode/
+.idea/
+*.swp
+.DS_Store
+
+# Build artifacts
+dist/

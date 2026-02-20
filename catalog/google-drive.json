@@ -1,0 +1,12 @@
+{
+  "apiId": "google-drive",
+  "sourceUrl": "https://www.googleapis.com/discovery/v1/apis/drive/v3/rest",
+  "baseUrl": "https://www.googleapis.com",
+  "allowedHosts": [
+    "www.googleapis.com"
+  ],
+  "auth": {
+    "headerName": "authorization",
+    "prefix": "Bearer "
+  }
+}

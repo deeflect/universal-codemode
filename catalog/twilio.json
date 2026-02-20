@@ -1,0 +1,12 @@
+{
+  "apiId": "twilio",
+  "sourceUrl": "https://raw.githubusercontent.com/twilio/twilio-oai/main/spec/json/twilio_api_v2010.json",
+  "baseUrl": "https://api.twilio.com",
+  "allowedHosts": [
+    "api.twilio.com"
+  ],
+  "auth": {
+    "headerName": "authorization",
+    "prefix": "Bearer "
+  }
+}

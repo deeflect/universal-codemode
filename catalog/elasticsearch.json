@@ -1,0 +1,12 @@
+{
+  "apiId": "elasticsearch",
+  "sourceUrl": "https://www.elastic.co/docs/api/doc/elasticsearch.json",
+  "baseUrl": "https://localhost:9200",
+  "allowedHosts": [
+    "localhost"
+  ],
+  "auth": {
+    "headerName": "authorization",
+    "prefix": "Bearer "
+  }
+}

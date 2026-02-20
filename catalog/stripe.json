@@ -1,0 +1,12 @@
+{
+  "apiId": "stripe",
+  "sourceUrl": "https://raw.githubusercontent.com/stripe/openapi/master/openapi/spec3.json",
+  "baseUrl": "https://api.stripe.com",
+  "allowedHosts": [
+    "api.stripe.com"
+  ],
+  "auth": {
+    "headerName": "authorization",
+    "prefix": "Bearer "
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "apiId": "google-gmail",
+  "sourceUrl": "https://www.googleapis.com/discovery/v1/apis/gmail/v1/rest",
+  "baseUrl": "https://gmail.googleapis.com",
+  "allowedHosts": [
+    "gmail.googleapis.com"
+  ],
+  "auth": {
+    "headerName": "authorization",
+    "prefix": "Bearer "
+  }
+}

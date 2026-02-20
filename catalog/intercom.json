@@ -1,0 +1,12 @@
+{
+  "apiId": "intercom",
+  "sourceUrl": "https://developers.intercom.com/docs/references/rest-api/api.intercom.io",
+  "baseUrl": "https://api.intercom.io",
+  "allowedHosts": [
+    "api.intercom.io"
+  ],
+  "auth": {
+    "headerName": "authorization",
+    "prefix": "Bearer "
+  }
+}
