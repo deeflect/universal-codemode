@@ -1,4 +1,4 @@
-# codemode
+# universal-codemode
 
 **Give your AI agent access to any API in ~1,000 tokens.**
 
