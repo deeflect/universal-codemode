@@ -256,7 +256,7 @@ User → x-api-key: sk_live_xxx → codemode server → Authorization: Bearer sk
 
 ## Credits
 
-Built on [Cloudflare's Code Mode](https://blog.cloudflare.com/code-mode-mcp/) pattern and their [Agents SDK](https://github.com/cloudflare/agents) + [MCP server](https://github.com/cloudflare/mcp). The Cloudflare team did the hard work of figuring out this approach and open-sourcing it.
+Powered by [`@cloudflare/codemode`](https://www.npmjs.com/package/@cloudflare/codemode) — the official Code Mode SDK. Built on [Cloudflare's Code Mode](https://blog.cloudflare.com/code-mode-mcp/) pattern and their [Agents SDK](https://github.com/cloudflare/agents) + [MCP server](https://github.com/cloudflare/mcp). The Cloudflare team did the hard work of figuring out this approach and open-sourcing it.
 
 Made by [Dee](https://x.com/deeflectcom).
 

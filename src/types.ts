@@ -6,6 +6,7 @@ export interface Env {
   SPEC_BUCKET: R2Bucket;
   SPEC_CACHE: KVNamespace;
   ADMIN_TOKEN: string;
+  LOADER?: WorkerLoader;
   MAX_EXECUTE_REQUESTS?: string;
   MAX_RESPONSE_CHARS?: string;
   MCP_RATE_LIMIT?: RateLimiter;

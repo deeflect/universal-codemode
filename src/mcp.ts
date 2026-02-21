@@ -1,36 +1,39 @@
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
+import { createCodeTool } from "@cloudflare/codemode/ai";
 import { z } from "zod";
-import { createExecuteExecutor, createSearchExecutor } from "./executor";
+import { createExecuteExecutor, createSearchExecutor, makeApiRequestFunction } from "./executor";
 import { truncateResponse } from "./truncate";
 import type { ApiMetadata, Env, ProcessedSpec } from "./types";
 
 const SEARCH_TYPES = `
-declare const spec: {
-  apiId: string;
-  title: string;
-  version: string;
-  paths: Record<string, Record<string, {
-    operationId: string;
-    summary?: string;
-    description?: string;
-    tags: string[];
-    parameters?: unknown[];
-    requestBody?: unknown;
-    responses?: Record<string, unknown>;
-  }>>;
-  operations: Array<{
-    operationId: string;
-    method: string;
-    path: string;
-    summary?: string;
-    tags: string[];
+declare const codemode: {
+  getSpec(input: {}): Promise<{
+    apiId: string;
+    title: string;
+    version: string;
+    paths: Record<string, Record<string, {
+      operationId: string;
+      summary?: string;
+      description?: string;
+      tags: string[];
+      parameters?: unknown[];
+      requestBody?: unknown;
+      responses?: Record<string, unknown>;
+    }>>;
+    operations: Array<{
+      operationId: string;
+      method: string;
+      path: string;
+      summary?: string;
+      tags: string[];
+    }>;
+    schemas: Record<string, unknown>;
   }>;
-  schemas: Record<string, unknown>;
 };`;
 
 const EXECUTE_TYPES = `
-declare const api: {
-  request(options: {
+declare const codemode: {
+  request(input: {
     operationId?: string;
     method?: string;
     path?: string;
@@ -54,7 +57,7 @@ export function createMcpServer(
   env: Env,
   ctx: ExecutionContext,
   spec: ProcessedSpec,
-  rawSpecText: string,
+  _rawSpecText: string,
   meta: ApiMetadata,
   authValue: string
 ): McpServer {
@@ -64,37 +67,78 @@ export function createMcpServer(
   const maxChars = Number(env.MAX_RESPONSE_CHARS ?? "40000");
   const maxReq = Number(env.MAX_EXECUTE_REQUESTS ?? "20");
 
-  server.registerTool(
-    "search",
-    {
-      description: `Search preprocessed OpenAPI spec for ${meta.apiId}.\n${SEARCH_TYPES}\nWrite an async arrow function. Return compact results like {operationId, method, path, summary}.`,
-      inputSchema: {
-        code: z.string()
-      }
+  const searchTool = createCodeTool({
+    executor: searchExecutor,
+    tools: {
+      getSpec: {
+        description: `Returns the processed OpenAPI spec for ${meta.apiId}.`,
+        inputSchema: z.object({}),
+        execute: async () => ({
+          apiId: spec.apiId,
+          title: spec.title,
+          version: spec.version,
+          paths: spec.paths,
+          operations: spec.operations,
+          schemas: spec.schemas,
+        }),
+      },
     },
-    async ({ code }) => {
-      const result = await searchExecutor(code, rawSpecText);
-      if (result.error) return { isError: true, content: [{ type: "text", text: `Error: ${result.error}` }] };
-      const text = withLogsAndWarnings(truncateResponse(result.result, maxChars), result.logs, spec.warnings);
-      return { content: [{ type: "text", text }] };
-    }
-  );
+    description: `Search preprocessed OpenAPI spec for ${meta.apiId}.\n${SEARCH_TYPES}\nWrite an async arrow function using codemode.getSpec({}) and return compact results like {operationId, method, path, summary}.`,
+  });
 
-  server.registerTool(
-    "execute",
-    {
-      description: `Execute API calls for ${meta.apiId}. Use search first, then call api.request.\n${EXECUTE_TYPES}\nAuth is injected server-side from request headers.`,
-      inputSchema: {
-        code: z.string()
-      }
+  const executeTool = createCodeTool({
+    executor: executeExecutor,
+    tools: {
+      request: {
+        description: `Execute one HTTP request against ${meta.apiId}.`,
+        inputSchema: z.object({
+          operationId: z.string().optional(),
+          method: z.string().optional(),
+          path: z.string().optional(),
+          pathParams: z.record(z.string(), z.union([z.string(), z.number()])).optional(),
+          query: z.record(z.string(), z.union([z.string(), z.number(), z.boolean(), z.undefined()])).optional(),
+          headers: z.record(z.string(), z.string()).optional(),
+          body: z.unknown().optional(),
+          contentType: z.string().optional(),
+          rawBody: z.boolean().optional(),
+        }),
+        execute: makeApiRequestFunction(spec, meta, authValue, maxReq),
+      },
     },
-    async ({ code }) => {
-      const result = await executeExecutor(code, spec, meta, authValue, maxReq);
-      if (result.error) return { isError: true, content: [{ type: "text", text: `Error: ${result.error}` }] };
-      const text = withLogsAndWarnings(truncateResponse(result.result, maxChars), result.logs, spec.warnings);
+    description: `Execute API calls for ${meta.apiId}. Use search first, then call codemode.request(...).\n${EXECUTE_TYPES}\nAuth is injected server-side from request headers.`,
+  });
+
+  server.registerTool("search", {
+    description: searchTool.description,
+    inputSchema: { code: z.string() },
+  }, async ({ code }: { code: string }) => {
+    try {
+      const out = (await (searchTool.execute as NonNullable<typeof searchTool.execute>)({ code }, { toolCallId: "search", messages: [] })) as {
+        result: unknown;
+        logs?: string[];
+      };
+      const text = withLogsAndWarnings(truncateResponse(out.result, maxChars), out.logs, spec.warnings);
       return { content: [{ type: "text", text }] };
+    } catch (err) {
+      return { isError: true, content: [{ type: "text", text: `Error: ${err instanceof Error ? err.message : String(err)}` }] };
     }
-  );
+  });
+
+  server.registerTool("execute", {
+    description: executeTool.description,
+    inputSchema: { code: z.string() },
+  }, async ({ code }: { code: string }) => {
+    try {
+      const out = (await (executeTool.execute as NonNullable<typeof executeTool.execute>)({ code }, { toolCallId: "execute", messages: [] })) as {
+        result: unknown;
+        logs?: string[];
+      };
+      const text = withLogsAndWarnings(truncateResponse(out.result, maxChars), out.logs, spec.warnings);
+      return { content: [{ type: "text", text }] };
+    } catch (err) {
+      return { isError: true, content: [{ type: "text", text: `Error: ${err instanceof Error ? err.message : String(err)}` }] };
+    }
+  });
 
   return server;
 }

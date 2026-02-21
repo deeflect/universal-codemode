@@ -28,6 +28,11 @@
 			"id": "62762f4d902845adb323a2596c7397c3"
 		}
 	],
+	"worker_loaders": [
+		{
+			"binding": "LOADER"
+		}
+	],
 	"routes": [
 		{
 			"pattern": "cm.dee.ad/*",
