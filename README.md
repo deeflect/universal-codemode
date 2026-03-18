@@ -1,6 +1,24 @@
-# universal-codemode
+<p align="center">
+  <h1 align="center">codemode</h1>
+</p>
 
-**Give your AI agent access to any API in ~1,000 tokens.**
+<p align="center">
+  <strong>Give your AI agent access to any API in ~1,000 tokens</strong>
+</p>
+
+<p align="center">
+  <a href="https://cm.deeflect.com"><img src="https://img.shields.io/badge/Live-cm.deeflect.com-black?style=flat-square" alt="Live" /></a>
+  <img src="https://img.shields.io/badge/APIs-56-blue?style=flat-square" alt="56 APIs" />
+  <img src="https://img.shields.io/badge/protocol-MCP-purple?style=flat-square" alt="MCP" />
+  <img src="https://img.shields.io/badge/language-TypeScript-blue?style=flat-square" alt="TypeScript" />
+  <img src="https://img.shields.io/badge/license-MIT-green?style=flat-square" alt="MIT" />
+</p>
+
+<p align="center">
+  <a href="https://cm.deeflect.com">Docs</a> · <a href="https://blog.deeflect.com/09-mcp-server/">Blog Post</a> · <a href="https://deeflect.com">Author</a>
+</p>
+
+---
 
 Most MCP servers flood your context window with hundreds of tool definitions. codemode gives your AI two tools instead: `search` and `execute`, built on [Cloudflare's Code Mode pattern](https://blog.cloudflare.com/code-mode-mcp/). Your AI writes code to search API docs and make calls. That's it.
 
