@@ -367,6 +367,38 @@ export const LANDING_HTML = `<!DOCTYPE html>
       .api-grid { grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); }
     }
   </style>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://cm.dee.ad/#app",
+      "name": "codemode",
+      "url": "https://cm.dee.ad",
+      "creator": {
+        "@id": "https://www.wikidata.org/entity/Q138828544"
+      },
+      "publisher": {
+        "@id": "https://www.wikidata.org/entity/Q138828544"
+      },
+      "description": "Give your AI agent access to any API in about 1,000 tokens.",
+      "applicationCategory": "DeveloperApplication"
+    },
+    {
+      "@type": "Person",
+      "@id": "https://www.wikidata.org/entity/Q138828544",
+      "name": "Dmitry Kargaev",
+      "url": "https://www.deeflect.com",
+      "sameAs": [
+        "https://www.wikidata.org/entity/Q138828544",
+        "https://github.com/deeflect",
+        "https://x.com/deeflectcom"
+      ]
+    }
+  ]
+}
+    </script>
 </head>
 <body>
 
