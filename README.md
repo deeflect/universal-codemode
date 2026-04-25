@@ -276,10 +276,18 @@ User → x-api-key: sk_live_xxx → codemode server → Authorization: Bearer sk
 
 Powered by [`@cloudflare/codemode`](https://www.npmjs.com/package/@cloudflare/codemode) — the official Code Mode SDK. Built on [Cloudflare's Code Mode](https://blog.cloudflare.com/code-mode-mcp/) pattern and their [Agents SDK](https://github.com/cloudflare/agents) + [MCP server](https://github.com/cloudflare/mcp). The Cloudflare team did the hard work of figuring out this approach and open-sourcing it.
 
-Made by [Dee](https://x.com/deeflectcom).
-
 ---
 
 ## License
 
 MIT. Do whatever you want with it.
+
+---
+
+### Made by
+
+Made by [Dee](https://deeflect.com) — AI Engineer + Product Designer in LA. Built codemode after watching too many MCP servers nuke a context window for no reason.
+
+The Cloudflare team did the hard part. I just packaged the result with 56 APIs and a casual attitude. Star if it saved your context, open an issue if it didn't.
+
+[deeflect.com](https://deeflect.com) · [Wikidata](https://www.wikidata.org/entity/Q138828544) · [LinkedIn](https://www.linkedin.com/in/dkargaev/) · [X](https://x.com/deeflectcom)
