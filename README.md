@@ -290,4 +290,6 @@ Made by [Dee](https://deeflect.com) — AI Engineer + Product Designer in LA. Bu
 
 The Cloudflare team did the hard part. I just packaged the result with 56 APIs and a casual attitude. Star if it saved your context, open an issue if it didn't.
 
+Need MCP work or AI integrations shipped fast? [dee.agency](https://dee.agency?utm_source=codemode&utm_medium=readme).
+
 [deeflect.com](https://deeflect.com) · [Wikidata](https://www.wikidata.org/entity/Q138828544) · [LinkedIn](https://www.linkedin.com/in/dkargaev/) · [X](https://x.com/deeflectcom)
